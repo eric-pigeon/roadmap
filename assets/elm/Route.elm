@@ -3,10 +3,12 @@ module Route exposing (Route(..), fromLocation, href)
 import Html exposing (Attribute)
 import Html.Attributes as Attr
 import Navigation exposing (Location)
+import UrlParser exposing (..)
 
 type Route
     = Home
     | NewFeature
+    | NotFound
 
 href : Route -> Attribute msg
 href route =
@@ -21,9 +23,25 @@ routeToString route =
                     []
 
                 NewFeature ->
-                    [ "categories" ]
+                    [ "new_feature" ]
+
+                NotFound ->
+                    [ "404" ]
     in
     "#/" ++ String.join "/" pieces
 
-fromLocation : Location -> Maybe Route
-fromLocation location = Just Home
+matchers : Parser (Route -> a) a
+matchers =
+    oneOf
+        [ map Home top
+        , map NewFeature (s "new_feature")
+        ]
+
+fromLocation : Location -> Route
+fromLocation location =
+     case (parseHash matchers location) of
+         Just route ->
+             route
+
+         Nothing ->
+             NotFound

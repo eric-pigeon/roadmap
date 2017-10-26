@@ -16,3 +16,5 @@ view model =
                 Page.Home.view
             NewFeature ->
                 Page.NewFeature.view
+            NotFound ->
+                text "Not found"

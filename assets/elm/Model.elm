@@ -3,11 +3,10 @@ module Model exposing (Model, init)
 import Route exposing (Route)
 
 type alias Model =
-    { currentRoute : Route
-    }
+    { currentRoute : Route }
 
-init : Model
-init =
+init : Route -> Model
+init initialRoute =
     {
-        currentRoute = Route.Home
+        currentRoute = initialRoute
     }

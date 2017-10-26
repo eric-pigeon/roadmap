@@ -7,6 +7,10 @@ import Navigation exposing (Location)
 import View exposing(view)
 import Route
 
+subscriptions : Model -> Sub Msg
+subscriptions model =
+    Sub.none
+
 main : Program Never Model Msg
 main =
     Navigation.program
@@ -14,5 +18,5 @@ main =
         { init = init
         , view = view
         , update = update
-        , subscriptions = \_ -> Sub.none
+        , subscriptions = subscriptions
         }
