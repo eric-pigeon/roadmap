@@ -1,1 +1,54 @@
-/* This file is for your main application css. */
+html, body, #app, .ugh {
+  height: 100%;
+  margin: 0px;
+}
+
+.line {
+  position: absolute;
+  background: black;
+}
+.horizontal {
+  top: 50%;
+  width: 100%;
+  height: 2px;
+}
+.vertical {
+  left: 50%;
+  height: 100%;
+  width: 2px;
+}
+
+.effort-parent {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+}
+
+.low-effort {
+  position: absolute;
+  left: 0;
+}
+
+.high-effort {
+  position: absolute;
+  right: 0;
+}
+
+.value-parent {
+  height: 100%;
+  position: absolute;
+  left: 50%;
+}
+
+.low-value {
+  position: absolute;
+  bottom: 0px;
+}
+
+.high-value { }
+
+.add-feature {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
