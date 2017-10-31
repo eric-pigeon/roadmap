@@ -20,5 +20,7 @@ defmodule RoadmapWeb.Router do
 
   scope "/api", RoadmapWeb do
     pipe_through :api
+
+    resources "/features", FeatureController, except: [:new, :edit]
   end
 end
