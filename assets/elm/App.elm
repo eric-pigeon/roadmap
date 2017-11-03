@@ -1,6 +1,6 @@
 module App exposing(..)
 
-import Model exposing (Model)
+import Models exposing (Model)
 import Msg exposing (Msg(..))
 import Navigation exposing(Location)
 import Route exposing (Route(..))
@@ -11,7 +11,7 @@ init location =
         currentRoute =
             Route.fromLocation location
     in
-        ( Model.init currentRoute, Cmd.none )
+        ( Models.init currentRoute, Cmd.none )
 
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
@@ -22,3 +22,5 @@ update msg model =
             ( model, Cmd.none )
         NoOp ->
             ( model, Cmd.none )
+        StoreFeatures features ->
+            ( { model | features = features }, Cmd.none )

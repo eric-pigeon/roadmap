@@ -42,6 +42,7 @@ defmodule Roadmap.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:ueberauth, "0.4.0"},
+      {:faker, "~> 0.9", only: [:dev, :test]}
 
     ]
   end

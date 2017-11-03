@@ -15,7 +15,7 @@ import Html.Attributes
 import Html.Events exposing (onClick)
 
 import Msg exposing (Msg(..))
-import Model exposing (Model)
+import Models exposing (Model)
 
 view : Model -> Html msg -> Html msg
 view model body =

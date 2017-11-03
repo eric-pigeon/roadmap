@@ -3,6 +3,7 @@ defmodule RoadmapWeb.UserSocket do
 
   ## Channels
   # channel "room:*", RoadmapWeb.RoomChannel
+  channel "features:lobby", RoadmapWeb.FeaturesChannel
 
   ## Transports
   transport :websocket, Phoenix.Transports.WebSocket

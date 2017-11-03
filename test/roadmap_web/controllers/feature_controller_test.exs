@@ -20,19 +20,22 @@ defmodule RoadmapWeb.FeatureControllerTest do
   describe "index" do
     test "lists all features", %{conn: conn} do
       conn = get conn, feature_path(conn, :index)
-      assert json_response(conn, 200)["data"] == []
+      assert json_response(conn, 200) == []
     end
   end
 
   describe "create feature" do
     test "renders feature when data is valid", %{conn: conn} do
       conn = post conn, feature_path(conn, :create), feature: @create_attrs
-      assert %{"id" => id} = json_response(conn, 201)["data"]
+      assert %{"id" => id} = json_response(conn, 201)
 
       conn = get conn, feature_path(conn, :show, id)
-      assert json_response(conn, 200)["data"] == %{
+      assert json_response(conn, 200) == %{
         "id" => id,
-        "name" => "some name"}
+        "name" => "some name",
+        "effort" => 50,
+        "value" => 50
+      }
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -46,12 +49,15 @@ defmodule RoadmapWeb.FeatureControllerTest do
 
     test "renders feature when data is valid", %{conn: conn, feature: %Feature{id: id} = feature} do
       conn = put conn, feature_path(conn, :update, feature), feature: @update_attrs
-      assert %{"id" => ^id} = json_response(conn, 200)["data"]
+      assert %{"id" => ^id} = json_response(conn, 200)
 
       conn = get conn, feature_path(conn, :show, id)
-      assert json_response(conn, 200)["data"] == %{
+      assert json_response(conn, 200) == %{
         "id" => id,
-        "name" => "some updated name"}
+        "name" => "some updated name",
+        "effort" => 50,
+        "value" => -50
+      }
     end
 
     test "renders errors when data is invalid", %{conn: conn, feature: feature} do

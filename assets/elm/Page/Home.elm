@@ -11,15 +11,20 @@ import Html.Attributes
         , id
         , src
         , type_
+        , style
         )
 import Html.Events exposing (onClick)
 import Route exposing (Route(..))
 import Msg exposing (Msg(..))
+import Models exposing (Model)
+import Models.Feature exposing (Feature)
 
-view :  Html Msg
-view =
+import Debug as Debug exposing (log)
+
+view : Model -> Html Msg
+view model =
     div [ class "ugh" ]
-        [ div [ class "line vertical" ] [ ]
+        ([ div [ class "line vertical" ] [ ]
         , div [ class "line horizontal" ] [ ]
         , div [ class "effort-parent" ]
               [ div [ class "low-effort" ] [ text "Low effort" ]
@@ -33,4 +38,19 @@ view =
               [ button [ onClick AddFeature ] [ text "Add Feature" ]
               , a [ Route.href NewFeature ] [ text "New Feature" ]
               ]
-        ]
+        ] ++ List.map featurePartial model.features)
+
+featurePartial : Feature -> Html msg
+featurePartial feature =
+    div [ class "feature", featureStyle feature.effort feature.value ] [ text feature.name ]
+
+px : Int -> String
+px number =
+  toString number ++ "%"
+
+featureStyle : Int -> Int -> Attribute msg
+featureStyle effort value =
+    style [ "left" => px (effort + 50)
+          , "top" => px (value +  50)
+          ]
+
