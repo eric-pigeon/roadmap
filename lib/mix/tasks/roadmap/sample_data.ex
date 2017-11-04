@@ -8,7 +8,7 @@ defmodule Mix.Tasks.Roadmap.SampleData do
 
     IO.puts "Adding features"
 
-    for _ <- 1..10 do
+    for _ <- 1..15 do
       %Feature{
         name: Faker.Commerce.En.product_name,
         value: Enum.random(-50..50),

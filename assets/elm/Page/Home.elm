@@ -44,13 +44,13 @@ featurePartial : Feature -> Html msg
 featurePartial feature =
     div [ class "feature", featureStyle feature.effort feature.value ] [ text feature.name ]
 
-px : Int -> String
+px : Float -> String
 px number =
   toString number ++ "%"
 
 featureStyle : Int -> Int -> Attribute msg
 featureStyle effort value =
-    style [ "left" => px (effort + 50)
-          , "top" => px (value +  50)
+    style [ ("left", px ((toFloat effort * 0.75) + 50))
+          , ("top", px ((toFloat value * 0.75 )+ 50))
           ]
 
