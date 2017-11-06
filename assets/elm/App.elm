@@ -20,7 +20,9 @@ update msg model =
             ( { model | currentRoute = route }, Cmd.none)
         AddFeature ->
             ( model, Cmd.none )
-        NoOp ->
-            ( model, Cmd.none )
         StoreFeatures features ->
             ( { model | features = features }, Cmd.none )
+        DragStart position ->
+            ( model, Cmd.none )
+        NoOp ->
+            ( model, Cmd.none )
